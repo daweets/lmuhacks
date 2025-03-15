@@ -1,4 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { IdentityTab } from "./components/IdentityTab";
+import { SearchTab } from "./components/SearchTab";
+import { ChatTab } from "./components/ChatTab";
 
 const LinkPage = () => {
   return (
@@ -13,7 +16,7 @@ const LinkPage = () => {
       </div>
       <Tabs
         defaultValue="identity"
-        className="w-full grid grid-rows-[auto_1fr]"
+        className="w-full grid grid-rows-[auto_1fr] bg-gray-50"
       >
         <TabsList className="w-full h-full p-2 grid grid-cols-3">
           <TabsTrigger
@@ -32,14 +35,14 @@ const LinkPage = () => {
             Chat
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="identity" className="h-full p-4">
-          identity
+        <TabsContent value="identity" className="h-full">
+          <IdentityTab />
         </TabsContent>
-        <TabsContent value="search" className="h-full p-4">
-          search
+        <TabsContent value="search" className="h-full">
+          <SearchTab />
         </TabsContent>
-        <TabsContent value="chat" className="h-full p-4">
-          chat
+        <TabsContent value="chat" className="h-full">
+          <ChatTab />
         </TabsContent>
       </Tabs>
       <footer className="w-full p-4 bg-gray-200">footer</footer>
