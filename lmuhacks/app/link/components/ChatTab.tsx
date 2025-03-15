@@ -1,3 +1,11 @@
+import Chat from "@/components/ui/chat";
+
 export const ChatTab = () => {
-  return <div className="p-4">Chat Tab</div>;
+  return <div>
+    
+  <Chat>
+
+  </Chat>
+
+  </div>;
 };
