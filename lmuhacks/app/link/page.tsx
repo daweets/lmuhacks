@@ -6,7 +6,7 @@ import { ChatTab } from "./components/ChatTab";
 const LinkPage = () => {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] min-h-screen font-[family-name:var(--font-outfit)]">
-      <div className="w-full p-4 flex items-center justify-center bg-gray-100 border-b border-gray-300">
+      <div className="w-full p-4 flex items-center justify-center bg-gray-50 border-b border-gray-300">
         <h1 className="text-2xl inline-block">
           Link @{" "}
           <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-lmu-crimson to-lmu-blue">
@@ -18,7 +18,7 @@ const LinkPage = () => {
         defaultValue="identity"
         className="w-full grid grid-rows-[auto_1fr] bg-gray-50"
       >
-        <TabsList className="w-full h-full p-2 grid grid-cols-3">
+        <TabsList className="w-full h-full py-4 px-8 grid grid-cols-3 gap-4 bg-gray-50">
           <TabsTrigger
             value="identity"
             className="flex-1 rounded-full p-2 text-lg"
@@ -45,7 +45,7 @@ const LinkPage = () => {
           <ChatTab />
         </TabsContent>
       </Tabs>
-      <footer className="w-full p-4 bg-gray-200">footer</footer>
+      <footer className="w-full p-4 bg-white">footer</footer>
     </div>
   );
 };
