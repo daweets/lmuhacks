@@ -2,14 +2,14 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const { gamertag, bio, userId } = await request.json();
+  const { gamertag, summary, userId } = await request.json();
 
   await (
     await clerkClient()
   ).users.updateUserMetadata(userId, {
     publicMetadata: {
       gamertag,
-      bio,
+      summary,
     },
   });
 
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 
   return Response.json({
     gamertag: user.publicMetadata.gamertag,
-    bio: user.publicMetadata.bio,
+    summary: user.publicMetadata.summary,
   });
 }
 

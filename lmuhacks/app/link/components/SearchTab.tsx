@@ -4,7 +4,7 @@ import SearchResult from "@/components/ui/search-result";
 
 interface SearchResult {
   gamertag: string;
-  bio: string;
+  summary: string;
   userId: string;
 }
 
@@ -45,7 +45,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
             result &&
             typeof result === "object" &&
             result.gamertag &&
-            result.bio &&
+            result.summary &&
             result.userId
         );
         console.log("Filtered search results:", results);
@@ -134,7 +134,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
               >
                 <SearchResult
                   gamertag={result.gamertag}
-                  description={result.bio}
+                  description={result.summary}
                   onClick={() => onChat(result.gamertag, result.userId)}
                 />
               </div>

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 import { createClerkClient } from "@clerk/backend";
@@ -7,7 +7,7 @@ const clerkClient = createClerkClient({
   secretKey: process.env.CLERK_SECRET_KEY,
 });
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   const apiKey = process.env.GOOGLE_API_KEY;
 
   if (!apiKey) {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     const peopleData = data.map((user) => ({
       gamertag: user.publicMetadata.gamertag,
-      bio: user.publicMetadata.summary,
+      summary: user.publicMetadata.summary,
       userId: user.id,
     }));
 
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       {
         "people": [{
           "gamertag": "string",
-          "bio": "string",
+          "summary": "string",
           "userId": "string"
         }, ...]
       }
@@ -71,11 +71,13 @@ export async function POST(request: NextRequest) {
       }
 
       // Ensure each person has the required fields
-      const validatedPeople = parsed.people.map((person) => ({
-        gamertag: person.gamertag || "Unknown",
-        bio: person.bio || person.summary || "No bio available",
-        userId: person.userId || "unknown",
-      }));
+      const validatedPeople = parsed.people.map(
+        (person: { gamertag: string; summary: string; userId: string }) => ({
+          gamertag: person.gamertag || "Unknown",
+          summary: person.summary || "No summary available",
+          userId: person.userId || "unknown",
+        })
+      );
 
       console.log("Final response:", { search: { people: validatedPeople } });
 
