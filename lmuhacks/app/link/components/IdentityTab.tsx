@@ -30,6 +30,7 @@ export const IdentityTab = () => {
   const [interests, setInterests] = useState<string[]>([]);
   const [newEducation, setNewEducation] = useState("");
   const [newInterest, setNewInterest] = useState("");
+  const [summary, setSummary] = useState("");
 
   const removeEducation = (item: string) => {
     setEducation(education.filter((i) => i !== item));
@@ -62,6 +63,32 @@ export const IdentityTab = () => {
   const addSuggestedInterest = (interest: string) => {
     if (!interests.includes(interest)) {
       setInterests([...interests, interest]);
+    }
+  };
+
+  const generateSummary = async () => {
+    try {
+      const requestBody = JSON.stringify({
+        education: education,
+        interests: interests,
+      });
+
+      const response = await fetch("/api/generateSummary", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: requestBody,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSummary(data.output);
+    } catch (error) {
+      console.error("Error generating summary:", error);
     }
   };
 
@@ -160,6 +187,13 @@ export const IdentityTab = () => {
         <p className="text-md text-gray-500">
           Add at least 5 personality chips to generate your summary
         </p>
+        <button
+          onClick={generateSummary}
+          className="bg-blue-500 text-white rounded-md p-2 mt-4"
+        >
+          Generate Summary
+        </button>
+        {summary && <pre className="mt-4">{summary}</pre>}
       </div>
     </div>
   );
