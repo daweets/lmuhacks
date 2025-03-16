@@ -8,22 +8,28 @@ import {
 import { Button } from "./button";
 
 interface SearchResultProps {
-  title: string;
+  gamertag: string;
   description: string;
+  onClick?: () => void;
 }
 
-const SearchResult = ({ title, description }: SearchResultProps) => {
+const SearchResult = ({
+  gamertag,
+  description,
+  onClick,
+}: SearchResultProps) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
           variant="ghost"
           className="rounded-full text-md hover:bg-transparent"
+          onClick={onClick}
         >
-          🧍 {title}
+          🧍 {gamertag}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent className="max-w-[300px] p-4 rounded-xl">
         <p>{description}</p>
       </TooltipContent>
     </Tooltip>

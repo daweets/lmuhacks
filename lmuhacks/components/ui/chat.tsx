@@ -1,9 +1,16 @@
 import { Session, Chatbox } from "@talkjs/react";
 
-export default function Chat() {
+interface ChatProps {
+  currentUserId: string;
+  otherUserId: string;
+}
+
+export default function Chat({ currentUserId, otherUserId }: ChatProps) {
+  const conversationId = [currentUserId, otherUserId].sort().join("_");
+
   return (
-    <Session appId="tIcVPi9c" userId="sample_user_alice">
-      <Chatbox conversationId="sample_conversation" style={{ height: "500px" }} />
+    <Session appId="tIcVPi9c" userId={currentUserId}>
+      <Chatbox conversationId={conversationId} style={{ height: "500px" }} />
     </Session>
   );
 }
