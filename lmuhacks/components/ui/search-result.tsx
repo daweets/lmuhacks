@@ -23,7 +23,7 @@ const SearchResult = ({
       <TooltipTrigger asChild>
         <Button
           variant="ghost"
-          className="rounded-full text-md hover:bg-transparent"
+          className="motion-blur-in-lg rounded-full text-md hover:bg-transparent"
           onClick={onClick}
         >
           🧍 {gamertag}
