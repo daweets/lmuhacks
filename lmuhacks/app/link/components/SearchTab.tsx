@@ -153,7 +153,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lmu-blue to-lmu-crimson blur-lg opacity-80 scale-120" />
           </div>
           {/* Main circle */}
-          <div className="relative w-full h-full rounded-full bg-white flex flex-col items-center justify-center shadow-lg">
+          <div className="motion-blur-in relative w-full h-full rounded-full bg-white flex flex-col items-center justify-center shadow-lg">
             <span className="text-foreground font-bold text-lg">You</span>
             <span>🎓💡</span>
           </div>
