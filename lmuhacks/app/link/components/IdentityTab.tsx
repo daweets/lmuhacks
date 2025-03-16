@@ -193,7 +193,11 @@ export const IdentityTab = () => {
         >
           Generate Summary
         </button>
-        {summary && <pre className="mt-4">{summary}</pre>}
+        {summary && (
+          <pre className="mt-4 summary-text">
+            {summary}
+          </pre>
+        )}
       </div>
     </div>
   );
