@@ -6,6 +6,7 @@ import { SearchTab } from "./components/SearchTab";
 import { ChatTab } from "./components/ChatTab";
 import { ClerkLoaded, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
+import Link from "next/link";
 
 const LinkPage = () => {
   const [activeTab, setActiveTab] = useState("identity");
@@ -23,12 +24,14 @@ const LinkPage = () => {
     <ClerkLoaded>
       <div className="grid grid-rows-[auto_1fr] min-h-screen font-[family-name:var(--font-outfit)]">
         <div className="w-full p-4 flex items-center justify-center bg-gray-50 border-b border-gray-300">
-          <h1 className="text-2xl inline-block">
-            🔗{" "}
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-lmu-crimson to-lmu-blue">
-              LMU
-            </span>
-          </h1>
+          <Link href="/">
+            <h1 className="text-2xl inline-block">
+              🔗{" "}
+              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-lmu-crimson to-lmu-blue">
+                LMU
+              </span>
+            </h1>
+          </Link>
           <div className="absolute right-[18px] top-[18px]">
             <UserButton />
           </div>
