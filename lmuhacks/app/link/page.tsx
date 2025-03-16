@@ -3,20 +3,20 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { IdentityTab } from "./components/IdentityTab";
 import { SearchTab } from "./components/SearchTab";
-import { ChatTab } from "./components/ChatTab";
+import ChatTab from "./components/ChatTab";
 import { ClerkLoaded, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 import Link from "next/link";
 
 const LinkPage = () => {
   const [activeTab, setActiveTab] = useState("identity");
-  const [selectedChat, setSelectedChat] = useState<{
+  const [selectedUser, setSelectedUser] = useState<{
     gamertag: string;
     userId: string;
   } | null>(null);
 
   const handleChatSelect = (gamertag: string, userId: string) => {
-    setSelectedChat({ gamertag, userId });
+    setSelectedUser({ gamertag, userId });
     setActiveTab("chat");
   };
 
@@ -71,7 +71,7 @@ const LinkPage = () => {
             <SearchTab onChat={handleChatSelect} />
           </TabsContent>
           <TabsContent value="chat" className="h-full">
-            <ChatTab selectedUser={selectedChat} />
+            <ChatTab selectedUser={selectedUser} />
           </TabsContent>
         </Tabs>
       </div>
