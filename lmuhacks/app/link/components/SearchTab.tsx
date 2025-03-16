@@ -4,7 +4,7 @@ import SearchResult from "@/components/ui/search-result";
 
 interface SearchResult {
   gamertag: string;
-  bio: string;
+  summary: string;
   userId: string;
 }
 
@@ -45,7 +45,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
             result &&
             typeof result === "object" &&
             result.gamertag &&
-            result.bio &&
+            result.summary &&
             result.userId
         );
         console.log("Filtered search results:", results);
@@ -134,7 +134,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
               >
                 <SearchResult
                   gamertag={result.gamertag}
-                  description={result.bio}
+                  description={result.summary}
                   onClick={() => onChat(result.gamertag, result.userId)}
                 />
               </div>
@@ -153,7 +153,7 @@ export const SearchTab = ({ onChat }: SearchTabProps) => {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lmu-blue to-lmu-crimson blur-lg opacity-80 scale-120" />
           </div>
           {/* Main circle */}
-          <div className="relative w-full h-full rounded-full bg-white flex flex-col items-center justify-center shadow-lg">
+          <div className="motion-blur-in relative w-full h-full rounded-full bg-white flex flex-col items-center justify-center shadow-lg">
             <span className="text-foreground font-bold text-lg">You</span>
             <span>🎓💡</span>
           </div>

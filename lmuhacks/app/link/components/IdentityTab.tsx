@@ -145,7 +145,7 @@ export const IdentityTab = ({ onSearch }: { onSearch: () => void }) => {
 
   return (
     <div className="p-8 flex flex-col-reverse gap-8 md:grid md:grid-cols-2 md:gap-8 text-lg h-full">
-      <div className="flex flex-col gap-4">
+      <div className="motion-preset-blur-up flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <h2 className="text-xl font-bold">🎓 Education</h2>
           <div className="flex flex-col gap-2">
@@ -235,9 +235,9 @@ export const IdentityTab = ({ onSearch }: { onSearch: () => void }) => {
       </div>
       <div
         className={cn(
-          `relative flex flex-col gap-2 bg-white rounded-xl p-8 h-full ${
-            summary && "shadow-lg scale-[101%]"
-          } transition-all duration-300`
+          `motion-preset-blur-up motion-delay-300 relative flex flex-col gap-2 bg-white rounded-xl p-8 h-full ${
+            summary && "shadow-lg scale-[101%] duration-500"
+          } transition-all`
         )}
       >
         <h2 className="text-xl font-bold">✨ Your Summary</h2>
