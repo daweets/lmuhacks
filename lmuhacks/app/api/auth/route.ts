@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   ).users.updateUserMetadata(userId, {
     publicMetadata: {
       gamertag,
-      bio,
+      summary,
     },
   });
 
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 
   return Response.json({
     gamertag: user.publicMetadata.gamertag,
-    bio: user.publicMetadata.bio,
+    summary: user.publicMetadata.summary,
   });
 }
 
