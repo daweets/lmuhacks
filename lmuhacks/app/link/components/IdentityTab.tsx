@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { X, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
+import { cn } from "@/lib/utils";
 
 const SUGGESTED_MAJORS = [
   "Computer Science",
@@ -232,8 +233,14 @@ export const IdentityTab = ({ onSearch }: { onSearch: () => void }) => {
           </div>
         </div>
       </div>
-      <div className="relative flex flex-col gap-2 bg-white rounded-xl p-8 h-full shadow-lg">
-        <h2 className="text-xl font-bold">✨ AI Summary</h2>
+      <div
+        className={cn(
+          `relative flex flex-col gap-2 bg-white rounded-xl p-8 h-full ${
+            summary && "shadow-lg scale-[101%]"
+          } transition-all duration-300`
+        )}
+      >
+        <h2 className="text-xl font-bold">✨ Your Summary</h2>
         <p className="text-md text-gray-500">
           {!canGenerate
             ? `Add ${5 - totalChips} more chip${
