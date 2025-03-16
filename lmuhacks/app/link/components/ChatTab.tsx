@@ -1,11 +1,24 @@
 import Chat from "@/components/ui/chat";
+import { useUser } from "@clerk/nextjs";
 
-export const ChatTab = () => {
-  return <div>
-    
-  <Chat>
+interface ChatTabProps {
+  selectedUser: { gamertag: string; userId: string } | null;
+}
 
-  </Chat>
+export const ChatTab = ({ selectedUser }: ChatTabProps) => {
+  const { user } = useUser();
 
-  </div>;
+  if (!selectedUser || !user) {
+    return (
+      <div className="h-full flex items-center justify-center text-gray-500">
+        Select a user from search to start chatting
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-full p-8">
+      <Chat currentUserId={user.id} otherUserId={selectedUser.userId} />
+    </div>
+  );
 };

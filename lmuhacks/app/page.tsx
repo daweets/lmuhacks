@@ -23,11 +23,10 @@ export default function Home() {
       </nav>
       <main className="relative flex flex-col gap-2 items-center justify-center w-full h-full px-8 pb-4">
         <div className="flex flex-col gap-2 items-center justify-center bg-gray-50 rounded-3xl w-full h-full p-8">
-          <div className="text-center text-3xl max-w-[480px] px-8">
-            🔗 Link with other people, and create meaningful connections
+          <div className="font-bold text-center text-3xl max-w-[500px] px-8">
+            🔗 Link
           </div>
           <div className="text-center text-gray-500 text-md max-w-[440px] px-8">
-            at{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-lmu-blue to-lmu-crimson">
               loyola marymount university
             </span>{" "}
@@ -36,14 +35,14 @@ export default function Home() {
           <SignedIn>
             <Link href="/link">
               <Button variant="outline" className="rounded-full mt-2">
-                Start linking
+                Start linking 🔗
               </Button>
             </Link>
           </SignedIn>
           <SignedOut>
             <SignInButton>
               <Button variant="outline" className="rounded-full mt-2">
-                Sign in
+                Sign in to start linking 🔗
               </Button>
             </SignInButton>
           </SignedOut>
